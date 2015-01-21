@@ -34,7 +34,7 @@ Phash::FFI - FFI-based pHash interface.
 =head1 DESCRIPTION
 
 Phash::FFI is the library adaptor for L<pHash|http://phash.org/>, which allows you to generate a hash value from media
-field (image, video, audio). It is designed so that if 2 media files have identical hash value if they are perceptually
+files (image, video, audio). It is designed so that if 2 media files have identical hash value if they are perceptually
 the same.
 
 =head1 FUNCTIONS
@@ -45,9 +45,14 @@ the same.
 
 This subroutine takes a path name and returns a 64-bit phash. For example:
 
-    my $file = $ARGV[0];
-    my $hash = Phash::FFI::dct_imagehash($file);
+    my $hash = Phash::FFI::dct_imagehash("Lenna.png");
     printf "%064b\t%s\n", $hash, $file;
+
+    # output
+    1100100100011100101100100110001001110111010110101001010110110001	Lenna.png
+
+The similary of hash can be calucaled by L<Hamming distance|http://en.wikipedia.org/wiki/Hamming_distance> of bits. When
+2 hash values have only 1 or 2 bits that are different, it is very likely that the corresponding 2 images look the same.
 
 =back
 
