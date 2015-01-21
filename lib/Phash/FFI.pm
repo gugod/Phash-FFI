@@ -1,5 +1,4 @@
 package Phash::FFI;
-# ABSTRACT: FFI-based pHash interface.
 use strict;
 use warnings;
 our $VERSION = "0.01";
@@ -30,7 +29,7 @@ sub dct_imagehash {
 
 =head1 NAME
 
-Phash::FFI
+Phash::FFI - FFI-based pHash interface.
 
 =head1 DESCRIPTION
 
