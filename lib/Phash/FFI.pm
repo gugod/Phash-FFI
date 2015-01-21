@@ -56,6 +56,10 @@ The similary of hash can be calucaled by L<Hamming distance|http://en.wikipedia.
 
 =back
 
+=head1 SEE ALSO
+
+L<Image::Hash>
+
 =head1 LICENSE
 
 Phash::FFI is released under MIT License.
