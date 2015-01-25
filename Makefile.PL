@@ -7,7 +7,7 @@ all_from 'lib/Phash/FFI.pm';
 repository 'git://github.com/gugod/Phash-FFI.git';
 
 requires
-    'FFI::Raw'      => '0.32',
+    'FFI::Platypus' => '0.12',
     'FFI::CheckLib' => '0.03';
 
 tests 't/*.t';
