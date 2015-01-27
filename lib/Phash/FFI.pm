@@ -3,26 +3,19 @@ use strict;
 use warnings;
 our $VERSION = "0.02";
 
-use FFI::Raw;
+use FFI::Platypus;
 use FFI::CheckLib;
 
-use constant _libphash => find_lib(lib => "pHash");
+my $ffi = FFI::Platypus->new;
+$ffi->lib(find_lib(lib => "pHash"));
 
-use constant {
-    _ph_dct_imagehash => FFI::Raw->new(
-        _libphash,
-        'ph_dct_imagehash',
-        FFI::Raw::int,
-        FFI::Raw::str,
-        FFI::Raw::ptr,
-    )
-};
+$ffi->attach( [ ph_dct_imagehash => '_ph_dct_imagehash' ] => [ 'string', 'uint64*' ] => 'int' );
 
 sub dct_imagehash {
     my ($file_path) = @_;
-    my $hash = FFI::Raw::memptr(8);
-    my $rv = _ph_dct_imagehash->call($file_path, $hash);
-    return unpack("Q", $hash->tostr(8));
+    my $hash;
+    my $rv = _ph_dct_imagehash($file_path, \$hash);
+    return $hash;
 }
 
 1;
