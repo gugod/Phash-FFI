@@ -10,6 +10,7 @@ my $ffi = FFI::Platypus->new;
 $ffi->lib(find_lib(lib => "pHash"));
 
 $ffi->attach( [ ph_dct_imagehash => '_ph_dct_imagehash' ] => [ 'string', 'uint64*' ] => 'int' );
+$ffi->attach([ ph_hamming_distance => 'ph_hamming_distance' ] => [ 'int', 'int' ] => 'int');
 
 sub dct_imagehash {
     my ($file_path) = @_;
@@ -44,8 +45,11 @@ This subroutine takes a path name and returns a 64-bit phash. For example:
     # output
     1100100100011100101100100110001001110111010110101001010110110001	Lenna.png
 
-The similary of hash can be calucaled by L<Hamming distance|http://en.wikipedia.org/wiki/Hamming_distance> of bits. When
-2 hash values have only 1 or 2 bits that are different, it is very likely that the corresponding 2 images look the same.
+=item ph_hamming_distance($hash1, $hash2)
+
+The similary of hash can be calculated by L<Hamming distance|http://en.wikipedia.org/wiki/Hamming_distance> of bits.
+
+When 2 hash values have only 1 or 2 bits that are different, it is very likely that the corresponding 2 images look the same.
 
 =back
 
