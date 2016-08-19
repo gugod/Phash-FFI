@@ -1,13 +1,13 @@
 package Phash::FFI;
 use strict;
 use warnings;
-our $VERSION = "0.04";
+our $VERSION = "0.05";
 
-use FFI::Platypus;
-use FFI::CheckLib;
+use FFI::Platypus 0.20;
 
 my $ffi = FFI::Platypus->new;
-$ffi->lib(find_lib(lib => "pHash"));
+
+$ffi->find_lib(lib => "pHash");
 
 $ffi->attach( [ ph_dct_imagehash => '_ph_dct_imagehash' ] => [ 'string', 'uint64*' ] => 'int' );
 $ffi->attach([ ph_hamming_distance => 'ph_hamming_distance' ] => [ 'int', 'int' ] => 'int');
