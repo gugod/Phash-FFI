@@ -10,7 +10,7 @@ my $ffi = FFI::Platypus->new;
 $ffi->find_lib(lib => "pHash");
 
 $ffi->attach( [ ph_dct_imagehash => '_ph_dct_imagehash' ] => [ 'string', 'uint64*' ] => 'int' );
-$ffi->attach([ ph_hamming_distance => 'ph_hamming_distance' ] => [ 'int', 'int' ] => 'int');
+$ffi->attach([ ph_hamming_distance => 'ph_hamming_distance' ] => [ 'uint64', 'uint64' ] => 'int');
 
 sub dct_imagehash {
     my ($file_path) = @_;
